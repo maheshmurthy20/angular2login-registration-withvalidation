@@ -1,0 +1,25 @@
+@media screen and (max-width: 2560px) and (min-width: 780px) {
+.backgrnd {
+      display: block;
+      background-color: whitesmoke;
+      padding: 50px;
+      
+  }  
+  .headerlyt{
+      background-color: whitesmoke;
+       height:50%;
+      width: 100%;
+     padding: 10px;
+      color: black
+  }
+}
+/*@media screen and (max-width: 1000px) and (min-width: 700px) {
+     #usrname  {
+        padding-left: 30px;
+        background: url(./assets/images/email.jpeg) left center no-repeat;
+    }
+    #pswrd{
+        padding-left: 30px;
+        background: url(./assets/images/user.png) left center no-repeat;
+}
+}*/

@@ -1,0 +1,65 @@
+<form name="singupform" #f="ngForm" novalidate (ngSubmit)=" f.form.valid && login(f.value, f.valid)" class="form-group">
+
+
+  <div class="col-md-12">
+
+    <div class=" col-md-6 col-md-offset-2 backgrnd">
+      <h2 >
+        Login..
+      </h2>
+      <div class="col-md-12">
+        <div class="col-md-3" style="text-align:right">
+          <label id="usrname" class="lable-control">UserName:</label>
+        </div>
+        <div class="col-md-9 form-group">
+          <input class="form-control" type="text" name="userName" [(ngModel)]="users.userName" placeholder="Email/Username" required #userName="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$">
+          
+          <span [hidden]="userName.valid || userName.pristine" class="text-danger">
+                        <small [hidden]="!userName.hasError('required')">UserName is required</small>
+                        <small [hidden]="!userName.hasError('pattern')">format should be <i>john@doe.com</i></small>
+                        
+                    </span>
+          
+          <!--<small [hidden]="userName.valid || (userName.pristine && !f.submitted)" class="text-danger">
+              userName is required and format should be <i>john@doe.com</i>.
+            </small>-->
+        </div> 
+      </div>
+      <div class="col-md-12" style="margin-top:2%">
+        <div class="col-md-3" style="text-align:right">
+          <label id="pswrd" class="lable-control">Password:</label>
+        </div>
+        <div class="col-md-9 form-group">
+          <input class="form-control" type="password" name="password" [(ngModel)]="users.password" placeholder="Password" required #password="ngModel"  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+          
+          <span [hidden]="password.valid || password.pristine" class="text-danger">
+                         <small [hidden]="!password.hasError('required')">Password is required</small>
+                        <small [hidden]="!password.hasError('pattern')">password must be 8 characters including 1 uppercase letter, 1 special character and alphanumeric characters?</small>
+          
+             </span>
+          
+          <!--<small [hidden]="password.valid || (password.pristine && !f.submitted)" class="text-danger">
+                 password must be 8 characters including 1 uppercase letter, 1 special character and alphanumeric characters?
+              </small>-->
+        </div>
+      </div>
+
+
+
+
+      <div class="col-md-12" style="margin-top:2%">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-success" [disabled]="!f.form.valid" valu="login">Login</button>
+          <!--<button type="submit" class="btn btn-danger"(click)="cancel();" value="Cancel">Cancel</button>-->
+        </div>
+        <div class="col-md-5" style="margin-top:2%">
+          <button class=" btn btn-link" [disabled]="!userName.valid" routerLink="/forgotpswd" routerLinkActive="active">Forgot Password?</button>
+          <!--<a [disabled]="!userName.valid" routerLink="/forgotpswd" routerLinkActive="active">Forgot Password?</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

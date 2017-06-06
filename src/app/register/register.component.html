@@ -1,0 +1,179 @@
+<form name="signupform" (ngSubmit)="f.form.valid && register(f.value, f.valid)" #f="ngForm" novalidate  >
+
+    
+    <div class="col-md-12 form-group">
+     
+      <div class=" col-md-6 col-md-offset-2 backgrnd">
+        <h3>Registration....</h3>
+        <br/>
+        <div class="col-md-12">
+          <div class="col-md-3" style="text-align:right">
+            <label class="lable-control">FirstName:</label>
+          </div>
+          <div class="col-md-9 form-group" >
+            <input class="form-control" type="text" name="firstname" [(ngModel)]="user.firstName" placeholder="First Name" required  pattern="[a-zA-Z][a-zA-Z ]+" #firstName="ngModel" minlength="5" maxlength="15" />
+
+              <span [hidden]="firstName.valid || firstName.pristine" class="text-danger">
+                        <small [hidden]="!firstName.hasError('required')">FirstName is required</small>
+                        <small [hidden]="!firstName.hasError('pattern')">Only alphabetsallowed</small>
+                        <small [hidden]="!firstName.hasError('minlength')">FirstName should be more than 5 characters</small>
+                        <small [hidden]="!firstName.hasError('maxlength')">FirstName should  not be more than 15 characters</small>
+                    </span>
+
+              <!--<small [hidden]="firstName.valid || (firstName.pristine && !f.submitted)" class="text-danger">
+                FirstName is required (minimum 5 characters).
+              </small> -->
+               <!--<div *ngIf="f.submitted &&firstName.invalid" class="help-block">First Name is required</div>-->
+          </div>
+        </div>
+        <div class="col-md-12" style="margin-top:2%">
+          <div class="col-md-3" style="text-align:right">
+            <label class="lable-control">LastName:</label>
+          </div>
+          <div class="col-md-9 form-group">
+            <input class="form-control" type="text" name="lastName" [(ngModel)]="user.lastName" placeholder="last Name" required  pattern="[a-zA-Z][a-zA-Z ]+"  #lastName="ngModel" minlength="5" maxlength="15"/>
+              
+               <span [hidden]="lastName.valid || lastName.pristine" class="text-danger">
+                        <small [hidden]="!lastName.hasError('required')">lastName is required</small>
+                        <small [hidden]="!lastName.hasError('pattern')">Only alphabetsallowed</small>
+                        <small [hidden]="!lastName.hasError('minlength')">lastName should be more than 5 characters</small>
+                        <small [hidden]="!lastName.hasError('maxlength')">lastName should  not be more than 15 characters</small>
+                    </span>
+
+              <!--<small [hidden]="lastName.valid || (lastName.pristine && !f.submitted)" class="text-danger">
+                LastName is required (minimum 5 characters).
+              </small>-->
+             <!--<div *ngIf="f.submitted &&!lastName.valid" class="help-block">Last Name is required</div>-->
+          </div>
+        </div>
+         <div class="col-md-12" style="margin-top:2%">
+          <div class="col-md-3" style="text-align:right">
+            <label class="lable-control">Gender:</label>
+          </div>
+          <div class="col-md-9">
+            <select name="Gender" class="form-control" [(ngModel)]="user.gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Transgender">Transgender</option>
+                
+        </select>
+          </div>
+        </div>
+         <div class="col-md-12" style="margin-top:2%">
+          <div class="col-md-3" style="text-align:right">
+            <label class="lable-control">Address:</label>
+          </div>
+          <div class="col-md-9 form-group">
+            <input class="form-control" type="text" name="address"[(ngModel)]="user.address" placeholder="Address">
+          </div>
+        </div>
+         <div class="col-md-12" style="margin-top:2%">
+          <div class="col-md-3" style="text-align:right">
+            <label class="lable-control">Phone:</label>
+          </div>
+          <div class="col-md-8 form-group">
+            <input class="form-control" type="text" name="contactNo" [(ngModel)]="user.contactNo" placeholder="Contact number" required #contactNo="ngModel" pattern="^[7-9][0-9]{9}$"/>
+            
+            <span [hidden]="contactNo.valid || contactNo.pristine" class="text-danger">
+                        <small [hidden]="!contactNo.hasError('required')">Phone number is required</small>
+                        <small [hidden]="!contactNo.hasError('pattern')">format should be <i>900887766</i></small>
+                        
+                    </span>
+            
+            <!--<small [hidden]="contactNo.valid || (contactNo.pristine && !f.submitted)" class="text-danger">
+                Phone number is required and format should be <i>900887766</i>.
+              </small>-->
+            <!--<div *ngIf="f.submitted &&!contactNo.valid" class="help-block">Contact number is required</div>-->
+          </div>
+          <div class="col-md-1" style="margin-left:-7%">
+            <button (click)="addcontact()">+</button>
+          </div>
+        </div>
+        <!-- extradiv starts -->
+           <div id="secondarycontact" class="col-md-12" style="margin-top:2%;display:none">
+          <div class="col-md-3" style="text-align:right">
+            <label class="lable-control">Phone:</label>
+          </div>
+          <div class="col-md-9 ">
+            <input class="form-control" type="text" name="secondarycontactNo" [(ngModel)]="user.secondarycontactNo" placeholder="Contact number"   />
+            
+            <!--<span [hidden]="secondarycontactNo.invalid || secondarycontactNo.pristine" class="text-danger">secondarycontact is same as Primarty contact please enter diffrent number
+                       
+                        <small [hidden]="!secondarycontactNo.hasError('pattern')">format should be <i>900887766</i></small>
+
+                    </span>
+            -->
+            
+          </div>
+         
+        </div>
+          <!--<div id="secondarycontact" class="col-md-12" style="margin-top:2%; display:none">
+          <div class="col-md-3" style="text-align:right">
+            <label class="lable-control">Gender:</label>
+          </div>
+          <div class="col-md-9">
+            <select name="secondGenders" class="form-control" [(ngModel)]="user.secondgenders">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Transgender">Transgender</option>
+                
+        </select>
+          </div>
+          </div>-->
+
+
+        <!-- extra div end -->
+         <div class="col-md-12" style="margin-top:2%">
+          <div class="col-md-3" style="text-align:right">
+            <label class="lable-control">Email:</label>
+          </div>
+          <div class="col-md-9 form-group" >
+            <input class="form-control" type="email" name="email"[(ngModel)]="user.email" placeholder="Email address" required #email="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"/>
+               
+               <span [hidden]="email.valid || email.pristine" class="text-danger">
+                        <small [hidden]="!email.hasError('required')">Email is required</small>
+                        <small [hidden]="!email.hasError('pattern')">format should be <i>john@doe.com</i></small>
+                        
+                    </span>
+               
+               <!--<small [hidden]="email.valid || (email.pristine && !f.submitted)" class="text-danger">
+                Email is required and format should be <i>john@doe.com</i>.
+              </small>-->
+            <!--<div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>-->
+          </div>
+        </div>
+                 <div class="col-md-12" style="margin-top:2%">
+          <div class="col-md-3" style="text-align:right">
+            <label class="lable-control">Password:</label>
+          </div>
+          <div class="col-md-9 form-group" >
+            <input class="form-control" type="password" name="password"[(ngModel)]="user.password" placeholder="Password" #password="ngModel" required  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"/>
+             
+             <span [hidden]="password.valid || password.pristine" class="text-danger">
+                         <small [hidden]="!password.hasError('required')">Password is required</small>
+                        <small [hidden]="!password.hasError('pattern')">password must be 8 characters including 1 uppercase letter, 1 special character and alphanumeric characters?</small>
+          
+             </span>
+             
+             <!--<small [hidden]="password.valid || (password.pristine && !f.submitted)" class="text-danger">
+                 password must be 8 characters including 1 uppercase letter, 1 special character and alphanumeric characters?
+              </small>-->
+             <!--<div *ngIf="f.submitted && password.invalid" class="help-block">Password is required</div>-->
+          </div>
+        </div>
+         <div class="col-md-12" style="margin-top:2%">
+          <div class="col-md-3">
+            
+          </div>
+          <div class="col-md-5 form-group">
+            <button type="submit"  class="btn btn-success" [disabled]="!f.form.valid" valu="Register">Register</button>
+            <!--<button type="submit" class="btn btn-danger"(click)="cancel();" value="Cancel">Cancel</button>-->
+            <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+          </div>
+          <!--<div class="col-md-4">
+            <label class="lable-control">*If you already registered:<a routerLink="/login" routerLinkActive="active">Login</a></label>
+          </div>-->
+        </div>
+      </div>
+    </div>
+  </form>
